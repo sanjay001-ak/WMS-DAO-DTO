@@ -1,0 +1,72 @@
+import java.util.*;
+public class Main{
+    
+    
+    public static Map<Integer, Integer> plc(ArrayList<Integer> key, ArrayList<Integer> value, int src, int index){
+        Map<Integer, Integer> map= new LinkedHashMap<>();
+        map.put(key.get(index), value.get(index));
+        for(int i=0,j=1;i<key.size();i++){
+            if(src+j == key.get(i)){
+                key.remove(index);
+                value.remove(index);
+                map.put(key.get(i), value.get(i));
+                src=value.get(i);
+                i=0;
+                j=1;
+            }
+            if(j==key.size()-1){
+                j++;
+                i=0;
+            }
+        }
+        return map;
+    }
+    public static void main(String arg[]){
+        Scanner sc = new Scanner(System.in);
+        String s="[[1,2],[2,3],[3,4]]";
+        ArrayList<Integer> key= new ArrayList<>();
+        ArrayList<Integer> value= new ArrayList<>();
+        s=s.replace("[","");
+        s=s.replace("]","");
+        String str[]=s.split(",");
+        for(int i=0;i<str.length-1;i+=2){
+            key.add(Integer.parseInt(str[i]));
+            value.add(Integer.parseInt(str[i+1]));
+        }
+        Map<Integer, Integer> temp_map=new LinkedHashMap<>();
+        Map<Integer, Integer> org_map=new LinkedHashMap<>();
+        for(int i=0;i<value.size();i++){
+            int src=value.get(i);
+            temp_map.putAll(plc(key, value, src, i));
+            if(org_map.size()<temp_map.size()){
+                org_map.putAll(temp_map);
+            }
+        }
+        System.out.println(org_map);
+        System.out.println(key);
+        System.out.println(value);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

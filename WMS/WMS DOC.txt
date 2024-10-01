@@ -1,0 +1,93 @@
+USER ---**
+	name
+	email_id
+	phone
+	aadhar
+	tot_bal
+	tot_waste deposited	
+
+
+DEPOIST --- doubt
+
+	email
+	emp_id
+	date
+	time
+	waste_id
+	waste_quantity
+	amount
+
+WITHDRAW --- doubt
+
+	email
+	date
+	time
+	amount
+
+STAFF ---**
+	name
+	email
+	id
+	admin_id
+	aadhar
+	doj
+	branch
+	password
+
+	
+ADMIN ---**
+	name 
+	email
+	id
+	phone
+	aadhar
+	doj
+	
+PLASTIC_DETAILS ---**
+	 
+	id
+	name
+	amount per kg
+
+INVANTORY
+	
+	date
+	waste_id
+	waste income
+	waste sell
+	waste in stock  // update stock
+	 
+
+MRF  (Materials Recycling Facilities)
+	
+	company name
+	company id
+	pass
+	email
+	incharge name
+	contact
+	address
+
+
+MRF_transaction
+
+
+	date
+	company id (if sells)
+	waste_id
+	amount of waste (if sells)
+	amount paid(if sells)
+
+
+
+Transaction
+
+	date 
+	time
+	from 
+	to
+	type (WITHDRAW/DEPOIST)
+	waste_id (if withdraw)
+	waste_quantity (if withdraw)
+	amount
+	staff_id
